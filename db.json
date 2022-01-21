@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "grocery shopping",
+      "created_at": "2 jan 2022",
+      "reminder": true
+    },
+    {
+      "id": 2,
+      "title": "outfit shopping",
+      "created_at": "3 jan 2022",
+      "reminder": false
+    },
+    {
+      "title": "office meeting",
+      "created_at": "22 jan 2022",
+      "reminder": true,
+      "id": 3
+    }
+  ]
+}
