@@ -17,16 +17,21 @@ function App() {
   }, [])
 
   const fetchTasks = async () => {
-    const result = await fetch('http://localhost:5000/tasks');
+    const result = await fetch('https://todos-80274.firebaseio.com/tasks.json');
     const data = await result.json();
-    return data;
+    console.log(data);
+    const plain_data = Object.keys(data).map((key) => {
+      return { id: key, ...data[key] }
+    });
+    console.log(plain_data);
+    return plain_data;
   }
 
   // ********************************
 
   // Add Task
   const addTask = async (task) => {
-    const result = await fetch('http://localhost:5000/tasks', {
+    const result = await fetch('https://todos-80274.firebaseio.com/tasks.json', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -39,13 +44,13 @@ function App() {
 
   // Delete Task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, { method: 'DELETE' });
+    await fetch(`https://todos-80274.firebaseio.com/tasks/${id}.json`, { method: 'DELETE' });
     setTasks(tasks.filter(task => task.id !== id));
   }
 
   // Fetching Single Data
   const fetchTask = async (id) => {
-    const result = await fetch(`http://localhost:5000/tasks/${id}`);
+    const result = await fetch(`https://todos-80274.firebaseio.com/tasks/${id}.json`);
     const data = await result.json();
     return data;
   }
@@ -55,7 +60,7 @@ function App() {
     const single_task = await fetchTask(id);
     const update_task = { ...single_task, reminder: !single_task.reminder };
 
-    const result = await fetch(`http://localhost:5000/tasks/${id}`, {
+    const result = await fetch(`https://todos-80274.firebaseio.com/tasks/${id}.json`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
@@ -63,7 +68,7 @@ function App() {
       body: JSON.stringify(update_task)
     });
     const data = await result.json();
-    
+
     setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: data.reminder } : task));
   }
 
