@@ -8,12 +8,9 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   // Fetching data from server
+
   useEffect(() => {
-    const getTasks = async () => {
-      const serverData = await fetchTasks();
-      setTasks(serverData);
-    }
-    getTasks();
+    fetchTasks();
   }, [])
 
   const fetchTasks = async () => {
@@ -24,22 +21,22 @@ function App() {
       return { id: key, ...data[key] }
     });
     console.log(plain_data);
-    return plain_data;
+    setTasks(plain_data);
   }
+
 
   // ********************************
 
   // Add Task
   const addTask = async (task) => {
-    const result = await fetch('https://todos-80274.firebaseio.com/tasks.json', {
+    await fetch('https://todos-80274.firebaseio.com/tasks.json', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
       },
       body: JSON.stringify(task)
     });
-    const newTask = await result.json();
-    setTasks([...tasks, newTask]);
+    fetchTasks();
   }
 
   // Delete Task
