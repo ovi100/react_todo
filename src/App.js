@@ -71,10 +71,21 @@ function App() {
 
 
   return (
-    <div className="container">
-      <Header onShow={() => setShowForm(!showForm)} showForm={showForm} />
-      {showForm && <AddTask onAdd={addTask} />}
-      {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onRemind={toggleRemind} />) : (<p>No task found</p>)}
+    <div className="todo">
+      <Header title="React Todo" onShow={() => setShowForm(!showForm)} showForm={showForm} />
+      <AddTask onAdd={addTask} />
+      {tasks.length > 0 ?
+        (
+          <Tasks tasks={tasks} onDelete={deleteTask} onRemind={toggleRemind} />
+        )
+        :
+        (
+          <div className="no-task">
+            <h3>No task found</h3>
+            <p>Please add some task</p>
+          </div>
+        )
+      }
     </div>
   );
 }

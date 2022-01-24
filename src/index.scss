@@ -1,0 +1,152 @@
+// @import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merienda&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  // font-family: 'Philosopher', sans-serif;
+  font-family: "Merienda", cursive;
+}
+
+.todo {
+  width: 385px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin: 30px auto;
+
+  .header {
+    .title {
+      background: #00d0ab;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      color: #ffffff;
+      padding: 10px 0;
+      text-align: center;
+    }
+  }
+  .add-form {
+    padding: 10px;
+
+    .input-box {
+      width: 85%;
+      height: 45px;
+      background: #ffffff;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      display: flex;
+      margin: 0 auto;
+      padding-left: 15px;
+
+      .form {
+        flex: 1;
+
+        .form-control {
+          width: 100%;
+          height: 45px;
+          border: 0;
+          color: #a7a7a7;
+          font-family: "Merienda", cursive;
+          font-size: 15px;
+          font-weight: 500;
+
+          &:focus {
+            outline: 0;
+          }
+        }
+        ::placeholder {
+          color: #a7a7a7;
+        }
+      }
+      .button {
+        button {
+          height: 45px;
+          width: 50px;
+          background: #00d0ab;
+          border: 0;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          color: #ffffff;
+          cursor: pointer;
+          font-family: "Merienda", cursive;
+          font-size: 16px;
+          font-weight: 600;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+  .task-list {
+    border-top: 1px solid #dddddd;
+    .task {
+      border-bottom: 1px solid #dddddd;
+      padding: 10px 15px;
+      .task-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .checkbox-text {
+          display: flex;
+          align-items: center;
+          flex: 1;
+
+          .checkbox {
+            margin-right: 5px;
+          }
+          .text {
+            text-transform: capitalize;
+          }
+        }
+        .buttons {
+          svg {
+            cursor: pointer;
+            font-size: 20px;
+            padding-left: 10px;
+          }
+        }
+      }
+      .task-time {
+        color: #a7a7a7;
+        font-size: 11px;
+        margin-top: 3px;
+      }
+    }
+    .reminder{
+      background: #008000;
+      border-bottom: 1px solid #008000;
+      transition: background .5s linear;
+      -webkit-transition: background .5s linear;
+      -o-transition: background .5s linear;
+      -moz-transition: background .5s linear;
+
+      .task-content {
+        .checkbox-text {
+          .text {
+            color: #ffffff;
+          }
+        }
+        .buttons {
+          svg {
+            fill: #ffffff;
+          }
+        }
+      }
+      .task-time {
+        color: #ffffff;
+      }
+    }
+  }
+  .no-task{
+    padding: 10px;
+    text-align: center;
+
+    p{
+      color: #a7a7a7;
+      margin-top: 5px;
+    }
+  }
+}

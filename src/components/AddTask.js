@@ -1,9 +1,10 @@
 import { useState } from "react";
 
 const AddTask = ({ onAdd }) => {
+  let jsDate = new Date();
   const [title, setTitle] = useState('');
-  const [created_at, setCreated_at] = useState('');
   const [reminder, setReminder] = useState(false);
+  const [complete, setComplete] = useState(false);
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -13,43 +14,33 @@ const AddTask = ({ onAdd }) => {
       return;
     }
 
-    onAdd({ title, created_at, reminder });
+    const date = jsDate.toDateString();
+    const time = jsDate.toLocaleString().split(", ");
+    const created_at = date + ' at ' + time[1];
+
+    onAdd({ title, created_at, reminder, complete });
 
     setTitle('');
-    setCreated_at('');
     setReminder(false);
+    setComplete(false);
   }
 
   return (
     <form className="add-form" onSubmit={formSubmit}>
-      <div className="form-control">
-        <label>Task</label>
-        <input
-          type="text"
-          placeholder="Enter task name"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+      <div className="input-box">
+        <div className="form">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter task name"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div className="button">
+          <button type="submit">add</button>
+        </div>
       </div>
-      <div className="form-control">
-        <label>Date</label>
-        <input
-          type="text"
-          placeholder="Enter date"
-          value={created_at}
-          onChange={(e) => setCreated_at(e.target.value)}
-        />
-      </div>
-      <div className="form-control form-control-check">
-        <input
-          type="checkbox"
-          checked={reminder}
-          value={reminder}
-          onChange={(e) => setReminder(e.currentTarget.checked)}
-        />
-        <label>Reminder</label>
-      </div>
-      <button type="submit" className="btn btn-block">Save Task</button>
     </form>
   )
 }

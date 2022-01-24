@@ -1,113 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Merienda&display=swap");
 * {
-  box-sizing: border-box;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 body {
-  font-family: 'Poppins', sans-serif;
-}
+  font-family: "Merienda", cursive; }
 
-.container {
-  max-width: 500px;
-  margin: 30px auto;
-  overflow: auto;
-  min-height: 300px;
-  border: 1px solid steelblue;
-  padding: 30px;
+.todo {
+  width: 385px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-}
+  margin: 30px auto; }
+  .todo .header .title {
+    background: #00d0ab;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center; }
+  .todo .add-form {
+    padding: 10px; }
+    .todo .add-form .input-box {
+      width: 85%;
+      height: 45px;
+      background: #ffffff;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      display: flex;
+      margin: 0 auto;
+      padding-left: 15px; }
+      .todo .add-form .input-box .form {
+        flex: 1; }
+        .todo .add-form .input-box .form .form-control {
+          width: 100%;
+          height: 45px;
+          border: 0;
+          color: #a7a7a7;
+          font-family: "Merienda", cursive;
+          font-size: 15px;
+          font-weight: 500; }
+          .todo .add-form .input-box .form .form-control:focus {
+            outline: 0; }
+        .todo .add-form .input-box .form ::placeholder {
+          color: #a7a7a7; }
+      .todo .add-form .input-box .button button {
+        height: 45px;
+        width: 50px;
+        background: #00d0ab;
+        border: 0;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        color: #ffffff;
+        cursor: pointer;
+        font-family: "Merienda", cursive;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: capitalize; }
+  .todo .task-list {
+    border-top: 1px solid #dddddd; }
+    .todo .task-list .task {
+      border-bottom: 1px solid #dddddd;
+      padding: 10px 15px; }
+      .todo .task-list .task .task-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; }
+        .todo .task-list .task .task-content .checkbox-text {
+          display: flex;
+          align-items: center;
+          flex: 1; }
+          .todo .task-list .task .task-content .checkbox-text .checkbox {
+            margin-right: 5px; }
+          .todo .task-list .task .task-content .checkbox-text .text {
+            text-transform: capitalize; }
+        .todo .task-list .task .task-content .buttons svg {
+          cursor: pointer;
+          font-size: 20px;
+          padding-left: 10px; }
+      .todo .task-list .task .task-time {
+        color: #a7a7a7;
+        font-size: 11px;
+        margin-top: 3px; }
+    .todo .task-list .reminder {
+      background: #008000;
+      border-bottom: 1px solid #008000;
+      transition: background .5s linear;
+      -webkit-transition: background .5s linear;
+      -o-transition: background .5s linear;
+      -moz-transition: background .5s linear; }
+      .todo .task-list .reminder .task-content .checkbox-text .text {
+        color: #ffffff; }
+      .todo .task-list .reminder .task-content .buttons svg {
+        fill: #ffffff; }
+      .todo .task-list .reminder .task-time {
+        color: #ffffff; }
+  .todo .no-task {
+    padding: 10px;
+    text-align: center; }
+    .todo .no-task p {
+      color: #a7a7a7;
+      margin-top: 5px; }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.btn {
-  display: inline-block;
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 15px;
-  font-family: inherit;
-}
-
-.btn:focus {
-  outline: none;
-}
-
-.btn:active {
-  transform: scale(0.98);
-}
-
-.btn-block {
-  display: block;
-  width: 100%;
-}
-
-.task {
-  background: #f4f4f4;
-  margin: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.task.reminder {
-  border-left: 5px solid green;
-}
-
-.task h3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-transform: capitalize;
-}
-
-.add-form {
-  margin-bottom: 40px;
-}
-
-.form-control {
-  margin: 20px 0;
-}
-
-.form-control label {
-  display: block;
-}
-
-.form-control input {
-  width: 100%;
-  height: 40px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 17px;
-}
-
-.form-control-check {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.form-control-check label {
-  flex: 1;
-}
-
-.form-control-check input {
-  flex: 0.1;
-  height: 20px;
-}
-
-footer {
-  margin-top: 30px;
-  text-align: center;
-}
+/*# sourceMappingURL=index.css.map */
