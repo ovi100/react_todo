@@ -4,8 +4,8 @@ import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 
 function App() {
-  const [showForm, setShowForm] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [editTask, setEditTask] = useState(null);
 
   // Fetching data from server
 
@@ -24,6 +24,13 @@ function App() {
     setTasks(plain_data);
   }
 
+  // Fetching Single Data
+  const fetchTask = async (id) => {
+    const result = await fetch(`https://todos-80274.firebaseio.com/tasks/${id}.json`);
+    const data = await result.json();
+    return data;
+  }
+
 
   // ********************************
 
@@ -39,17 +46,28 @@ function App() {
     fetchTasks();
   }
 
+
+  // ********************************
+
+  // Edit Task
+  const onEdit = async (task) => {
+    const update_task = task;
+
+    await fetch(`https://todos-80274.firebaseio.com/tasks/${task.id}.json`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(update_task)
+    });
+    setEditTask(null);
+    fetchTasks();
+  }
+
   // Delete Task
   const deleteTask = async (id) => {
     await fetch(`https://todos-80274.firebaseio.com/tasks/${id}.json`, { method: 'DELETE' });
     setTasks(tasks.filter(task => task.id !== id));
-  }
-
-  // Fetching Single Data
-  const fetchTask = async (id) => {
-    const result = await fetch(`https://todos-80274.firebaseio.com/tasks/${id}.json`);
-    const data = await result.json();
-    return data;
   }
 
   // Remind Task
@@ -57,26 +75,48 @@ function App() {
     const single_task = await fetchTask(id);
     const update_task = { ...single_task, reminder: !single_task.reminder };
 
-    const result = await fetch(`https://todos-80274.firebaseio.com/tasks/${id}.json`, {
+    await fetch(`https://todos-80274.firebaseio.com/tasks/${id}.json`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
       },
       body: JSON.stringify(update_task)
     });
-    const data = await result.json();
 
-    setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: data.reminder } : task));
+    fetchTasks();
   }
+
+  // Complete Task
+  const completeTask = async (id) => {
+    const single_task = await fetchTask(id);
+    const update_task = { ...single_task, complete: !single_task.complete };
+
+    await fetch(`https://todos-80274.firebaseio.com/tasks/${id}.json`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(update_task)
+    });
+
+    fetchTasks();
+  }
+
 
 
   return (
     <div className="todo">
-      <Header title="React Todo" onShow={() => setShowForm(!showForm)} showForm={showForm} />
-      <AddTask onAdd={addTask} />
+      <Header title="React Todo" />
+      <AddTask onAdd={addTask} onEdit={onEdit} task={editTask} />
       {tasks.length > 0 ?
         (
-          <Tasks tasks={tasks} onDelete={deleteTask} onRemind={toggleRemind} />
+          <Tasks
+            tasks={tasks}
+            onDelete={deleteTask}
+            onRemind={toggleRemind}
+            onComplete={completeTask}
+            setEditTask={setEditTask}
+          />
         )
         :
         (

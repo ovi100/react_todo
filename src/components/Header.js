@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Header = ({ title, onShow, showForm }) => {
+const Header = ({ title }) => {
   return (
     <div className="header">
       <div className="title">

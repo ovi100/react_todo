@@ -100,6 +100,9 @@ body {
           .text {
             text-transform: capitalize;
           }
+          .complete {
+            text-decoration: line-through;
+          }
         }
         .buttons {
           svg {
@@ -115,13 +118,13 @@ body {
         margin-top: 3px;
       }
     }
-    .reminder{
+    .reminder {
       background: #008000;
       border-bottom: 1px solid #008000;
-      transition: background .5s linear;
-      -webkit-transition: background .5s linear;
-      -o-transition: background .5s linear;
-      -moz-transition: background .5s linear;
+      transition: background 0.5s linear;
+      -webkit-transition: background 0.5s linear;
+      -o-transition: background 0.5s linear;
+      -moz-transition: background 0.5s linear;
 
       .task-content {
         .checkbox-text {
@@ -140,11 +143,11 @@ body {
       }
     }
   }
-  .no-task{
+  .no-task {
     padding: 10px;
     text-align: center;
 
-    p{
+    p {
       color: #a7a7a7;
       margin-top: 5px;
     }
