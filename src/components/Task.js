@@ -12,8 +12,8 @@ const Task = ({ task, onDelete, onRemind, onComplete, onEdit, ...restProps }) =>
           <div className={`text ${task.complete ? 'complete' : ''}`}>{task.title}</div>
         </div>
         <div className="buttons">
-          <BiEdit onClick={() => restProps.setEditTask(task)} title="Edit Task" />
-          <BiAlarm onClick={() => onRemind(task.id)} title="Toggle Reminder" />
+          {task.complete === false && <BiEdit onClick={() => restProps.setEditTask(task)} title="Edit Task" />}
+          {task.complete === false && <BiAlarm onClick={() => onRemind(task.id)} title="Toggle Reminder" />}
           <BiTrash onClick={() => onDelete(task.id)} title="Delete Task" />
         </div>
       </div>
