@@ -12,9 +12,6 @@ const AddTask = ({ onAdd, onEdit, task }) => {
     }
   }, [task]);
 
-  ///console.log('Task props:', task);
-  //console.log('current title:', title);
-
   const formSubmit = (e) => {
     e.preventDefault();
 

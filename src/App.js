@@ -4,6 +4,7 @@ import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState([]);
   const [editTask, setEditTask] = useState(null);
 
@@ -16,12 +17,15 @@ function App() {
   const fetchTasks = async () => {
     const result = await fetch('https://todos-80274.firebaseio.com/tasks.json');
     const data = await result.json();
-    console.log(data);
-    const plain_data = Object.keys(data).map((key) => {
-      return { id: key, ...data[key] }
-    });
-    console.log(plain_data);
-    setTasks(plain_data);
+    //console.log(data);
+    if (data) {
+      const plain_data = Object.keys(data).map((key) => {
+        return { id: key, ...data[key] }
+      });
+      // console.log(plain_data);
+      setTasks(plain_data);
+    }
+    setLoading(false);
   }
 
   // Fetching Single Data
@@ -30,7 +34,6 @@ function App() {
     const data = await result.json();
     return data;
   }
-
 
   // ********************************
 
@@ -45,7 +48,6 @@ function App() {
     });
     fetchTasks();
   }
-
 
   // ********************************
 
@@ -102,29 +104,37 @@ function App() {
     fetchTasks();
   }
 
-
-
   return (
     <div className="todo">
       <Header title="React Todo" />
       <AddTask onAdd={addTask} onEdit={onEdit} task={editTask} />
-      {tasks.length > 0 ?
-        (
-          <Tasks
-            tasks={tasks}
-            onDelete={deleteTask}
-            onRemind={toggleRemind}
-            onComplete={completeTask}
-            setEditTask={setEditTask}
-          />
-        )
-        :
+      {loading ?
         (
           <div className="no-task">
-            <h3>No task found</h3>
-            <p>Please add some task</p>
+            <h3>Task Loading.....</h3>
           </div>
         )
+        :
+        <>
+          {tasks.length > 0 ?
+            (
+              <Tasks
+                tasks={tasks}
+                onDelete={deleteTask}
+                onRemind={toggleRemind}
+                onComplete={completeTask}
+                setEditTask={setEditTask}
+              />
+            )
+            :
+            (
+              <div className="no-task">
+                <h3>No task found</h3>
+                <p>Please add some task</p>
+              </div>
+            )
+          }
+        </>
       }
     </div>
   );
