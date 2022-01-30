@@ -3,7 +3,7 @@ import { BiAlarm } from "react-icons/bi";
 import { BiEdit } from "react-icons/bi";
 const Task = ({ task, ...restProps }) => {
   return (
-    <div className={`task ${task.reminder ? 'reminder' : ''}`}>
+    <div className={`task ${task.complete === false && task.reminder ? 'reminder' : ''}`}>
       <div className="task-content">
         <div className="checkbox-text">
           <div className="checkbox">

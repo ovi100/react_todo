@@ -57,6 +57,29 @@ body {
         font-size: 16px;
         font-weight: 600;
         text-transform: capitalize; }
+  .todo .tabs .tabs-nav {
+    border-top: 1px solid #dddddd;
+    display: flex;
+    align-items: center;
+    padding: 0 10px; }
+    .todo .tabs .tabs-nav .nav-item {
+      color: #000000;
+      cursor: pointer;
+      padding: 5px 10px;
+      text-transform: capitalize;
+      transition: color 0.5s linear;
+      -webkit-transition: color 0.5s linear;
+      -o-transition: color 0.5s linear;
+      -moz-transition: color 0.5s linear; }
+    .todo .tabs .tabs-nav .active {
+      border-bottom: 2px solid #00d0ab;
+      color: #00d0ab;
+      transition: color 0.5s linear;
+      -webkit-transition: color 0.5s linear;
+      -o-transition: color 0.5s linear;
+      -moz-transition: color 0.5s linear; }
+  .todo .tabs .tabs-content {
+    margin-top: 10px; }
   .todo .task-list {
     border-top: 1px solid #dddddd; }
     .todo .task-list .task {
@@ -84,6 +107,8 @@ body {
         color: #a7a7a7;
         font-size: 11px;
         margin-top: 3px; }
+    .todo .task-list .task:last-child {
+      border-bottom: 0; }
     .todo .task-list .reminder {
       background: #008000;
       border-bottom: 1px solid #008000;

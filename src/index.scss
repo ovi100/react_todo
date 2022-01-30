@@ -79,6 +79,36 @@ body {
       }
     }
   }
+  .tabs {
+    .tabs-nav {
+      border-top: 1px solid #dddddd;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+
+      .nav-item {
+        color: #000000;
+        cursor: pointer;
+        padding: 5px 10px;
+        text-transform: capitalize;
+        transition: color 0.5s linear;
+        -webkit-transition: color 0.5s linear;
+        -o-transition: color 0.5s linear;
+        -moz-transition: color 0.5s linear;
+      }
+      .active {
+        border-bottom: 2px solid #00d0ab;
+        color: #00d0ab;
+        transition: color 0.5s linear;
+        -webkit-transition: color 0.5s linear;
+        -o-transition: color 0.5s linear;
+        -moz-transition: color 0.5s linear;
+      }
+    }
+    .tabs-content {
+      margin-top: 10px;
+    }
+  }
   .task-list {
     border-top: 1px solid #dddddd;
     .task {
@@ -117,6 +147,9 @@ body {
         font-size: 11px;
         margin-top: 3px;
       }
+    }
+    .task:last-child {
+      border-bottom: 0;
     }
     .reminder {
       background: #008000;
