@@ -111,7 +111,6 @@ body {
       border-bottom: 0; }
     .todo .task-list .reminder {
       background: #008000;
-      border-bottom: 1px solid #008000;
       transition: background 0.5s linear;
       -webkit-transition: background 0.5s linear;
       -o-transition: background 0.5s linear;
