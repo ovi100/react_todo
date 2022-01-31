@@ -6,6 +6,7 @@ import AddTask from './components/AddTask';
 
 function App() {
   const types = ['all', 'active', 'complete', 'reminder'];
+  const [toggleForm, setToggleForm] = useState(false);
   const [active, setActive] = useState(types[0]);
   const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState([]);
@@ -54,7 +55,7 @@ function App() {
     setCompleteList(complete_list);
 
     // Get Reminder List
-    const reminder_list = tasks.filter(task => task.reminder === true);
+    const reminder_list = tasks.filter(task => task.reminder === true && task.complete === false);
     setReminderList(reminder_list);
 
   }, [tasks])
@@ -128,8 +129,8 @@ function App() {
 
   return (
     <div className="todo">
-      <Header title="React Todo" />
-      <AddTask onAdd={addTask} onEdit={onEdit} task={editTask} />
+      <Header title="React Todo" onToggle={() => setToggleForm(!toggleForm)} toggleForm={toggleForm} />
+      {toggleForm && <AddTask onAdd={addTask} onEdit={onEdit} task={editTask} />}
       <div className="tabs">
         <div className="tabs-nav">
           {

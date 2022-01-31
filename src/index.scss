@@ -19,13 +19,26 @@ body {
   margin: 30px auto;
 
   .header {
+    background: #00d0ab;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+
     .title {
-      background: #00d0ab;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       color: #ffffff;
-      padding: 10px 0;
+      flex: 1;
       text-align: center;
+    }
+
+    .button {
+      svg {
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 25px;
+      }
     }
   }
   .add-form {
