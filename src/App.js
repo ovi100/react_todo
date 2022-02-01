@@ -7,7 +7,7 @@ import AddTask from './components/AddTask';
 function App() {
   const types = ['all', 'active', 'complete', 'reminder'];
   const [toggleForm, setToggleForm] = useState(false);
-  const [active, setActive] = useState(types[0]);
+  const [active, setActive] = useState(types[1]);
   const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState([]);
   const [editTask, setEditTask] = useState(null);
@@ -130,7 +130,7 @@ function App() {
   return (
     <div className="todo">
       <Header title="React Todo" onToggle={() => setToggleForm(!toggleForm)} toggleForm={toggleForm} />
-      {toggleForm && <AddTask onAdd={addTask} onEdit={onEdit} task={editTask} />}
+      {toggleForm && <AddTask onAdd={addTask} onEdit={onEdit} task={editTask} toggleForm={toggleForm} />}
       <div className="tabs">
         <div className="tabs-nav">
           {
@@ -158,6 +158,7 @@ function App() {
                         onRemind={toggleRemind}
                         onComplete={completeTask}
                         setEditTask={setEditTask}
+                        setToggleForm={setToggleForm}
                       />
                     )
                     :
@@ -177,7 +178,7 @@ function App() {
               {loading ?
                 (
                   <div className="no-task">
-                    <h3>Task Loading.....</h3>
+                    <h3>Active Task Loading.....</h3>
                   </div>
                 )
                 :
@@ -190,12 +191,13 @@ function App() {
                         onRemind={toggleRemind}
                         onComplete={completeTask}
                         setEditTask={setEditTask}
+                        setToggleForm={setToggleForm}
                       />
                     )
                     :
                     (
                       <div className="no-task">
-                        <h3>No task found</h3>
+                        <h3>No active task found</h3>
                         <p>Please add some task</p>
                       </div>
                     )
@@ -209,7 +211,7 @@ function App() {
               {loading ?
                 (
                   <div className="no-task">
-                    <h3>Task Loading.....</h3>
+                    <h3>Complete Task Loading.....</h3>
                   </div>
                 )
                 :
@@ -222,13 +224,14 @@ function App() {
                         onRemind={toggleRemind}
                         onComplete={completeTask}
                         setEditTask={setEditTask}
+                        setToggleForm={setToggleForm}
                       />
                     )
                     :
                     (
                       <div className="no-task">
-                        <h3>No task found</h3>
-                        <p>Please add some task</p>
+                        <h3>No complete task found</h3>
+                        <p>Please complete some task</p>
                       </div>
                     )
                   }
@@ -241,7 +244,7 @@ function App() {
               {loading ?
                 (
                   <div className="no-task">
-                    <h3>Task Loading.....</h3>
+                    <h3>Reminder Task Loading.....</h3>
                   </div>
                 )
                 :
@@ -254,13 +257,14 @@ function App() {
                         onRemind={toggleRemind}
                         onComplete={completeTask}
                         setEditTask={setEditTask}
+                        setToggleForm={setToggleForm}
                       />
                     )
                     :
                     (
                       <div className="no-task">
-                        <h3>No task found</h3>
-                        <p>Please add some task</p>
+                        <h3>No reminder task found</h3>
+                        <p>Please set reminder some task</p>
                       </div>
                     )
                   }

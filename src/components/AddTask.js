@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const AddTask = ({ onAdd, onEdit, task }) => {
+const AddTask = ({ onAdd, onEdit, task, toggleForm }) => {
   let jsDate = new Date();
   const [title, setTitle] = useState('');
   const [reminder, setReminder] = useState(false);
@@ -11,6 +11,10 @@ const AddTask = ({ onAdd, onEdit, task }) => {
       setTitle(task.title);
     }
   }, [task]);
+
+  if (!toggleForm) {
+    setTitle('');
+  }
 
   const formSubmit = (e) => {
     e.preventDefault();
